@@ -1,23 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Layout from "./Component/Layout/Layout";
+import Classes from "./Pages/Classes/Classes";
+import ProtectedRoute from "./Component/ProtecteRoute/ProtectedRoute.";
+import { Questions } from "./Pages/Questions/Questions";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function App() {
+
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            >
+              {" "}
+            </Route>
+
+            <Route
+              path="/classes"
+              element={
+                <ProtectedRoute>
+                  {" "}
+                  <Classes />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/questions/:questionsId"
+              element={
+                <ProtectedRoute>
+                  {" "}
+                  <Questions
+                  //  questions={questions} 
+
+                   />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </div>
   );
 }

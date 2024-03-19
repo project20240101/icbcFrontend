@@ -71,7 +71,8 @@ export const Questions = (props) => {
         <section className="classes-box container">
           <div className="classes-heading">
             <h2>
-              Practice <span className="b-class-secondary">Class {classId}</span>
+              Practice{" "}
+              <span className="b-class-secondary">Class {classId}</span>
             </h2>
           </div>
 
@@ -94,19 +95,24 @@ export const Questions = (props) => {
                     {" "}
                     Click Here For other classes
                   </button>
+                  <Link to={`/answers/:${classId}`}>
+                    <button style={{ marginLeft: "20px" }} className="home_btn">
+                      Check answersheet here
+                    </button>
+                  </Link>
                 </Link>
               </div>
             ) : (
               <div className=" questions-container">
                 <div className="question-section">
-                {questions.length >= 1 ? (
-                  <div className="question-count">
-                    <span>Question {currentQuestion + 1}</span>/
-                    {questions.length}
-                  </div>
-                ) : (
-                  <h2>Loading ...</h2>
-                )}
+                  {questions.length >= 1 ? (
+                    <div className="question-count">
+                      <span>Question {currentQuestion + 1}</span>/
+                      {questions.length}
+                    </div>
+                  ) : (
+                    <h2>Loading ...</h2>
+                  )}
                   <div className="question-text">
                     {questions.length >= 1 &&
                       questions[currentQuestion].questionText}

@@ -6,15 +6,10 @@ import Layout from "./Component/Layout/Layout";
 import Classes from "./Pages/Classes/Classes";
 import ProtectedRoute from "./Component/ProtecteRoute/ProtectedRoute.";
 import { Questions } from "./Pages/Questions/Questions";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Answers } from "./Pages/Answers/Answers.js";
+// import { useEffect, useState } from "react";
 
 function App() {
-
-
-
-
-
   return (
     <div>
       <BrowserRouter>
@@ -45,11 +40,17 @@ function App() {
               path="/questions/:questionsId"
               element={
                 <ProtectedRoute>
-                  {" "}
                   <Questions
-                  //  questions={questions} 
+                  />
+                </ProtectedRoute>
+              }
+            />
 
-                   />
+            <Route
+              path="/answers/:answersId"
+              element={
+                <ProtectedRoute>
+                  <Answers />
                 </ProtectedRoute>
               }
             />

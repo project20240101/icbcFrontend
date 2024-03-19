@@ -39,14 +39,13 @@ const Register = () => {
         .then((result) => {
           if (result.data.status === "success") {
             setError(false);
+            navigate("/");
             setTimeout(() => {
               success();
             }, 1000);
-
-            navigate("/");
           }
         })
-        .catch((err) => console.log(err), fail());
+        .catch((err) => (err ? fail() : ""));
     }
   };
 

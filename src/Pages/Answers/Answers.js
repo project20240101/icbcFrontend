@@ -68,7 +68,8 @@ export const Answers = () => {
                       item?.answerOptions?.map((i, index2) => (
                         <button
                           style={{
-                            background: `${i.isCorrect ? "green" : "white"}`,color:`${i.isCorrect ? "#fff" : "#000"}`
+                            background: `${i.isCorrect ? "green" : "white"}`,
+                            color: `${i.isCorrect ? "#fff" : "#000"}`,
                           }}
                           className="answerSheet-btn"
                         >
@@ -79,6 +80,7 @@ export const Answers = () => {
                 </div>
               ))}
           </div>
+          
         </section>
       </div>
     </div>

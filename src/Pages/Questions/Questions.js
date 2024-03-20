@@ -3,6 +3,7 @@ import "./Questions.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Question from "../../questions.json";
+import loaderGif from "../../Component/Assets/loader.gif"
 
 export const Questions = (props) => {
   const [data, setData] = useState([]);
@@ -67,7 +68,7 @@ export const Questions = (props) => {
       setGratings(true);
     }
   };
-  console.log(questions);
+
 
   return (
     <div className="questions">
@@ -115,7 +116,7 @@ export const Questions = (props) => {
                       {questions.length}
                     </div>
                   ) : (
-                    <h2>Loading ...</h2>
+                    <div className="loader-gif"><img src={loaderGif} alt="loader"></img></div>
                   )}
                   <div className="question-text">
                     {questions.length >= 1 &&

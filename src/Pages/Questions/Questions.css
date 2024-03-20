@@ -8,7 +8,9 @@
   font-size: var(--fs-jumbo);
   font-weight: 700;
 }
-.score-section button {
+
+.loader-gif{
+  text-align: center;
 }
 
 /* QUESTION/TIMER/LEFT SECTION */

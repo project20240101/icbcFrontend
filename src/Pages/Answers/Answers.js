@@ -32,8 +32,6 @@ export const Answers = () => {
 
   const classId = path.charAt(path.length - 1);
 
-
-
   useEffect(() => {
     const filteredQuestion = data?.filter((item) => {
       return item.class.toString() === classId;
@@ -42,8 +40,6 @@ export const Answers = () => {
       setQuestions(filteredQuestion);
     }
   }, [data]);
-
-  
 
   return (
     <div className="answers">
@@ -72,7 +68,7 @@ export const Answers = () => {
                       item?.answerOptions?.map((i, index2) => (
                         <button
                           style={{
-                            background: `${i.isCorrect ? "green" : "red"}`,
+                            background: `${i.isCorrect ? "green" : "white"}`,color:`${i.isCorrect ? "#fff" : "#000"}`
                           }}
                           className="answerSheet-btn"
                         >

@@ -14,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const [handleEye, setHandleEye] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const notify = () => toast("Please Enter Valid Credential!");
 
@@ -24,7 +25,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setLoading(true);
     axios
       .post("https://icbsbackend.onrender.com/api/auth/login", {
         email,
@@ -35,14 +36,17 @@ const Login = () => {
           setTimeout(() => {
             dispatch(login());
             navigate("/dashboard");
+            setEmail("");
+            setPassword("");
+            setLoading(false);
           }, 1000);
-          setEmail("");
-          setPassword("");
         }
       })
       .catch((err) => {
         notify();
+        setLoading(false);
       });
+   
   };
 
   return (
@@ -87,9 +91,15 @@ const Login = () => {
             Forgot password?
           </Link>
 
-          <button type="submit" className="login_btn">
-            Login
-          </button>
+          {!loading ? (
+            <button type="submit" className="login_btn">
+              Login
+            </button>
+          ) : (
+            <button disabled={true} className="login_btn">
+              Processing...
+            </button>
+          )}
         </form>
 
         <ToastContainer />

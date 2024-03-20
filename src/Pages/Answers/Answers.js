@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Questions from "../../questions.json";
+import "./Answers.css";
 
 export const Answers = () => {
   const [data, setData] = useState([]);
@@ -31,7 +32,7 @@ export const Answers = () => {
 
   const classId = path.charAt(path.length - 1);
 
-  console.log(classId);
+
 
   useEffect(() => {
     const filteredQuestion = data?.filter((item) => {
@@ -42,10 +43,10 @@ export const Answers = () => {
     }
   }, [data]);
 
-  console.log(questions);
+  
 
   return (
-    <div className="questions">
+    <div className="answers">
       <div className="classes">
         <section className="classes-box container">
           <div className="classes-heading">
@@ -59,11 +60,11 @@ export const Answers = () => {
             {questions &&
               questions?.map((item, index) => (
                 <div
-                  className=" questions-container"
+                  className=" answers-container"
                   style={{ marginBottom: "100px" }}
                 >
-                  <div className="question-section">
-                    <div className="question-text">{item.questionText}</div>
+                  <div className="answer-section">
+                    <div className="answer-texts">{item.questionText}</div>
                   </div>
 
                   <div className="answer-section">
@@ -73,7 +74,7 @@ export const Answers = () => {
                           style={{
                             background: `${i.isCorrect ? "green" : "red"}`,
                           }}
-                          className="answer-btn"
+                          className="answerSheet-btn"
                         >
                           {i.answerText}
                         </button>

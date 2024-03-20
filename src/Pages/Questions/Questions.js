@@ -7,6 +7,8 @@ import Question from "../../questions.json";
 export const Questions = (props) => {
   const [data, setData] = useState([]);
   const [questions, setQuestions] = useState([]);
+ 
+
 
   const url = "https://icbsbackend.onrender.com/api/questions";
   const options = {
@@ -16,6 +18,7 @@ export const Questions = (props) => {
     },
   };
   useEffect(() => {
+
     fetch(url, options)
       .then((response) => response.json())
       .then((data) => {
@@ -24,6 +27,7 @@ export const Questions = (props) => {
       .catch((error) => {
         console.error(error);
       });
+    
   }, []);
 
   const params = useParams();

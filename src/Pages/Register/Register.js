@@ -11,7 +11,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [handleEye, setHandleEye] = useState(true);
-
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const note = () =>
@@ -21,13 +21,21 @@ const Register = () => {
 
   useEffect(() => {}, [error]);
 
+  const handleError=()=>{
+    fail();
+    setLoading(false)
+
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setLoading(true)
     if (password.length < 5 || name.length < 5) {
       setError(true);
+     
       setTimeout(() => {
         note();
+        setLoading(false)
       }, 1000);
     } else {
       axios
@@ -42,11 +50,13 @@ const Register = () => {
             navigate("/");
             setTimeout(() => {
               success();
+              setLoading(false)
             }, 1000);
           }
         })
-        .catch((err) => (err ? fail() : ""));
+        .catch((err) =>   (err ? handleError() : ""));
     }
+  
   };
 
   return (
@@ -96,9 +106,15 @@ const Register = () => {
             </span>
           </div>
 
-          <button type="submit" className="login_btn">
-            Signup
-          </button>
+          {!loading ? (
+            <button type="submit" className="login_btn">
+              Sign Up
+            </button>
+          ) : (
+            <button disabled={true}  className="login_btn">
+              Processing...
+            </button>
+          )}
         </form>
         <ToastContainer />
 

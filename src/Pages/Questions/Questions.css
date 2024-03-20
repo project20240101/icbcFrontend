@@ -37,9 +37,9 @@
 
 .question-text {
   margin-bottom: 12px;
-
-  font-size: 48px;
+  font-size: 28px;
   line-height: 1.2;
+  min-height: 100px;
 }
 
 .timer-text {
@@ -64,7 +64,6 @@
   width: 100%;
   font-size: 21px;
   color: #ffffff;
-  /* background-color: #252d4a; */
   border-radius: 15px;
   display: flex;
   padding: 5px;
@@ -84,7 +83,7 @@
 }
 
 .answer-btn:hover {
-  background: linear-gradient(-90deg, #003a74, #006ad5);
+  background: linear-gradient(-90deg, #006ad5, #2f922f);
 }
 
 button:focus {
